@@ -52,8 +52,8 @@ public class User implements UserDetails, Serializable {
   @Column(name = "lastname")
   private String lastname;
 
-  @Nullable
-  @Column(name="inscription_date")
+
+  @Column(name="inscription_date", nullable = true)
   private String inscription;
 
   @JsonIgnore
