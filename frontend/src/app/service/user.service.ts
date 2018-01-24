@@ -37,7 +37,12 @@ export class UserService {
   }
 
   updateMyInfo(user){
-    return this.apiService.put(this.config.account_url, JSON.stringify(user)).map(() =>{
+    const updateHeaders = new HttpHeaders({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    });
+	console.log(user);
+    return this.apiService.put(this.config.account_url, JSON.stringify(user), updateHeaders).map(() =>{
       console.log("update success");
     });
   }

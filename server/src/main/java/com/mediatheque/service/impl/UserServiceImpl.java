@@ -5,6 +5,7 @@ import java.util.List;
 import com.mediatheque.model.Authority;
 import com.mediatheque.model.User;
 import com.mediatheque.model.UserRequest;
+import com.mediatheque.model.UserUpdate;
 import com.mediatheque.repository.UserRepository;
 import com.mediatheque.service.AuthorityService;
 import com.mediatheque.service.UserService;
@@ -59,6 +60,16 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
+  public User update(UserUpdate userUpdate) {
+    User user = this.findById(userUpdate.getId());
+    user.setUsername(userUpdate.getUsername());
+    user.setFirstname(userUpdate.getFirstname());
+    user.setLastname(userUpdate.getLastname());
+    this.userRepository.saveAndFlush(user);
+    return user;
+  }
+
+  @Override
   public User save(UserRequest userRequest) {
     User user = new User();
     user.setUsername(userRequest.getUsername());
@@ -70,5 +81,6 @@ public class UserServiceImpl implements UserService {
     this.userRepository.save(user);
     return user;
   }
+
 
 }

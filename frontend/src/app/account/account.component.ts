@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Subject} from "rxjs/Subject";
-import {AuthService, UserService} from "../service";
+import {UserService} from "../service";
 import {DisplayMessage} from "../shared/models/display-message";
-import {nodeValue} from "@angular/core/src/view";
 
 @Component({
   selector: 'app-account',
@@ -36,7 +35,6 @@ export class AccountComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder
@@ -51,11 +49,12 @@ export class AccountComponent implements OnInit {
         this.notification = params;
       });
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/user/my-account';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.form = this.formBuilder.group({
-      username: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
-      firstname:[''],
-      lastname: ['']
+      id:[this.user.id],
+      username: [this.user.username],
+      firstname:[this.user.firstname],
+      lastname: [this.user.lastname]
     });
   }
 
@@ -75,14 +74,14 @@ export class AccountComponent implements OnInit {
       .delay(1000)
       .subscribe(data => {
           console.log(data);
-          this.authService.login(this.form.value).subscribe(data =>{
-            this.userService.getMyInfo().subscribe();
-          });
+          this.userService.currentUser.username = this.form.get('username').value;
+          this.userService.currentUser.lastname = this.form.get('lastname').value;
+          this.userService.currentUser.firstname = this.form.get('firstname').value;
           this.router.navigate([this.returnUrl]);
         },
         error => {
           this.submitted = false;
-          console.log("Sign up error" + JSON.stringify(error));
+          console.log("Update error" + JSON.stringify(error));
           this.notification = { msgType: 'error', msgBody: error['error'].errorMessage };
         });
 

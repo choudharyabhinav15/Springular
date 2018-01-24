@@ -7,6 +7,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.mediatheque.model.UserUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -66,11 +68,18 @@ public class UserController {
     return new ResponseEntity<User>(user, HttpStatus.CREATED);
   }
 
-  @RequestMapping(method = PUT, value = "/my-account")
+  @RequestMapping(method = PUT, value = "/user/my-account")
   @PreAuthorize("hasRole('USER')")
-  public ResponseEntity<?> updateUser(@RequestBody UserRequest userRequest,
-                                   UriComponentsBuilder ucBuilder) {
-    User user = this.userService.save(userRequest);
+  public ResponseEntity<?> updateUser(@RequestBody UserUpdate userUpdate) {
+    if(userUpdate.getId()!=null) {
+      User existUser = this.userService.findById(userUpdate.getId());
+      if (existUser == null){
+        existUser = this.userService.findByUsername(userUpdate.getUsername());
+		if (existUser == null)
+			throw new ResourceConflictException(userUpdate.getId(), "User not found !");
+	  }
+	}
+      User user = this.userService.update(userUpdate);
     return new ResponseEntity<User>(user, HttpStatus.OK);
   }
 
