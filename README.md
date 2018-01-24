@@ -1,6 +1,5 @@
 [![Build Status](https://travis-ci.org/ghilesfeghoul/Springular.svg?branch=master)](https://travis-ci.org/ghilesfeghoul/Springular)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bfwg/angular-spring-jwt-starter/blob/master/LICENSE)
-[![npm download](https://img.shields.io/npm/dm/generator-badge.svg)](https://www.npmjs.com/package/generator-badge)
 
 <p align="center">
   <a href="http://angular-spring-starter.fanjin.io" target="_blank">
