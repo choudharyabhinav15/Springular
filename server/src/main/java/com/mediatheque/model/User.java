@@ -14,8 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import com.sun.istack.internal.Nullable;
 import org.hibernate.validator.constraints.Email;
 import org.joda.time.DateTime;
 import org.springframework.security.core.GrantedAuthority;
