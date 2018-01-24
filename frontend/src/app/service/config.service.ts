@@ -4,9 +4,7 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class ConfigService {
 
-  private _url = 'http://localhost:8080';
-
-  private _api_url = this._url + '/api';
+  private _api_url = '/api';
 
   private _refresh_token_url = this._api_url + '/refresh';
 
