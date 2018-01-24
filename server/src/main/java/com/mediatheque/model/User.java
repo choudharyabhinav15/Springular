@@ -14,6 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.sun.istack.internal.Nullable;
+import org.hibernate.validator.constraints.Email;
+import org.joda.time.DateTime;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -25,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "USER")
 public class User implements UserDetails, Serializable {
+
   @Id
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +37,10 @@ public class User implements UserDetails, Serializable {
 
   @Column(name = "username")
   private String username;
+
+  @Email
+  @Column(name="email", unique = true)
+  private String email;
 
   @JsonIgnore
   @Column(name = "password")
@@ -43,6 +52,26 @@ public class User implements UserDetails, Serializable {
   @Column(name = "lastname")
   private String lastname;
 
+  @Nullable
+  @Column(name="inscription_date")
+  private String inscription;
+
+  @JsonIgnore
+  @Column(name="max_loans")
+  private int max_loans;
+
+  @Column(name="loans")
+  private int loans;
+
+  @Column(name="current_loans")
+  private int current;
+
+  public User() {
+    this.current = 0;
+    this.inscription = new DateTime().toString();
+    this.max_loans = 24;
+    this.loans = 0;
+  }
 
   @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   @JoinTable(name = "user_authority",
@@ -89,6 +118,46 @@ public class User implements UserDetails, Serializable {
   public void setLastname(String lastname) {
 
     this.lastname = lastname;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public String getInscription() {
+    return inscription;
+  }
+
+  public void setInscription(String inscription) {
+    this.inscription = inscription;
+  }
+
+  public int getMax_loans() {
+    return max_loans;
+  }
+
+  public void setMax_loans(int max_loans) {
+    this.max_loans = max_loans;
+  }
+
+  public int getLoans() {
+    return loans;
+  }
+
+  public void setLoans(int loans) {
+    this.loans = loans;
+  }
+
+  public int getCurrent() {
+    return current;
+  }
+
+  public void setCurrent(int current) {
+    this.current = current;
   }
 
   public void setAuthorities(List<Authority> authorities) {

@@ -18,17 +18,25 @@
         <input name="id" value="{{user.id}}" type="hidden">
         <mat-input-container>
           <label>Username: </label>
-          <input matInput formControlName="username" value="{{user.username}}" [disabled]>
+          <input matInput formControlName="username" value="{{user.username}}" disabled="disabled">
         </mat-input-container>
+        <br>
+        <mat-input-container>
+          <label>Email: </label>
+          <input matInput formControlName="email" value="{{user.email}}" type="email">
+        </mat-input-container>
+        <br>
         <mat-input-container>
           <label>First Name: </label>
           <input matInput formControlName="firstname" value="{{user.firstname}}">
         </mat-input-container>
+        <br>
         <mat-input-container>
           <label>Last Name: </label>
           <input matInput formControlName="lastname" value="{{user.lastname}}">
         </mat-input-container>
-          <button type="submit" [disabled]="!signupForm.form.valid" mat-raised-button color="primary">Update</button>
+        <br>
+        <button type="submit" [disabled]="!signupForm.form.valid" mat-raised-button color="primary">Update</button>
       </form>
       <br>
 

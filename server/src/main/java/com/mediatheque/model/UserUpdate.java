@@ -6,6 +6,8 @@ public class UserUpdate {
 
     private String username;
 
+    private String email;
+
     private String firstname;
 
     private String lastname;
@@ -41,5 +43,13 @@ public class UserUpdate {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -53,6 +53,7 @@ export class AccountComponent implements OnInit {
     this.form = this.formBuilder.group({
       id:[this.user.id],
       username: [this.user.username],
+      email: [this.user.email, Validators.email],
       firstname:[this.user.firstname],
       lastname: [this.user.lastname]
     });
@@ -75,6 +76,7 @@ export class AccountComponent implements OnInit {
       .subscribe(data => {
           console.log(data);
           this.userService.currentUser.username = this.form.get('username').value;
+          this.userService.currentUser.email = this.form.get('email').value;
           this.userService.currentUser.lastname = this.form.get('lastname').value;
           this.userService.currentUser.firstname = this.form.get('firstname').value;
           this.router.navigate([this.returnUrl]);

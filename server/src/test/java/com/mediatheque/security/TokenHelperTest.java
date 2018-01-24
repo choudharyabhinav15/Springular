@@ -25,7 +25,7 @@ public class TokenHelperTest {
 
     @Test(expected=ExpiredJwtException.class)
     public void testGenerateTokenExpired() {
-        String token = tokenHelper.generateToken("fanjin");
+        String token = tokenHelper.generateToken("ghiles");
         Jwts.parser()
             .setSigningKey("mySecret")
             .parseClaimsJws(token)

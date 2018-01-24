@@ -47,7 +47,12 @@ public class UserServiceImpl implements UserService {
     return u;
   }
 
-  @PreAuthorize("hasRole('ADMIN')")
+    @Override
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
   public User findById(Long id) throws AccessDeniedException {
     User u = userRepository.findOne(id);
     return u;
@@ -63,6 +68,7 @@ public class UserServiceImpl implements UserService {
   public User update(UserUpdate userUpdate) {
     User user = this.findById(userUpdate.getId());
     user.setUsername(userUpdate.getUsername());
+    user.setEmail(userUpdate.getEmail());
     user.setFirstname(userUpdate.getFirstname());
     user.setLastname(userUpdate.getLastname());
     this.userRepository.saveAndFlush(user);
@@ -73,6 +79,7 @@ public class UserServiceImpl implements UserService {
   public User save(UserRequest userRequest) {
     User user = new User();
     user.setUsername(userRequest.getUsername());
+    user.setEmail(userRequest.getEmail());
     user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
     user.setFirstname(userRequest.getFirstname());
     user.setLastname(userRequest.getLastname());

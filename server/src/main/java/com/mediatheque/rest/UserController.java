@@ -16,10 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import com.mediatheque.exception.ResourceConflictException;
 import com.mediatheque.model.User;
@@ -28,6 +25,7 @@ import com.mediatheque.service.UserService;
 /**
  * Created by Ghiles FEGHOUL on 28/12/2017
  */
+@CrossOrigin(value = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
@@ -62,6 +60,10 @@ public class UserController {
     if (existUser != null) {
       throw new ResourceConflictException(userRequest.getId(), "Username already exists");
     }
+    existUser = this.userService.findByUsername(userRequest.getEmail());
+      if (existUser != null) {
+          throw new ResourceConflictException(userRequest.getId(), "Email already exists");
+      }
     User user = this.userService.save(userRequest);
     HttpHeaders headers = new HttpHeaders();
     headers.setLocation(ucBuilder.path("/api/user/{userId}").buildAndExpand(user.getId()).toUri());

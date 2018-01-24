@@ -1,6 +1,7 @@
 package com.mediatheque.rest;
 
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
  * Created by Ghiles FEGHOUL on 28/12/2017
  */
 
+@CrossOrigin(value = "http://localhost:4200")
 @RestController
 @RequestMapping( value = "/api", produces = MediaType.APPLICATION_JSON_VALUE )
 public class PublicController {

@@ -65,4 +65,22 @@ public class UserServiceTest extends AbstractTest {
     userService.findByUsername("user");
   }
 
+  @Test
+  public void testFindByEmailWithoutUser() throws AccessDeniedException {
+    userService.findByEmail("gfl@acial.fr");
+  }
+
+  @Test
+  public void testFindByEmailWithAdminEmail() throws AccessDeniedException{
+    mockAuthenticatedUser(buildTestAdmin());
+    userService.findByEmail("gfl@acial.fr");
+  }
+
+  @Test
+  public void testFindByEmailWithUserEmail() throws AccessDeniedException{
+    mockAuthenticatedUser(buildTestUser());
+    userService.findByEmail("juba.tidaf@gmail.com");
+  }
+
+
 }
