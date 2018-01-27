@@ -25,7 +25,7 @@ import com.mediatheque.service.UserService;
 /**
  * Created by Ghiles FEGHOUL on 28/12/2017
  */
-@CrossOrigin(value = "http://localhost:4200")
+
 @RestController
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {

@@ -1,5 +1,7 @@
 package com.mediatheque.service;
 
+import com.mediatheque.model.User;
+import com.mediatheque.model.UserRequest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
@@ -71,7 +73,7 @@ public class UserServiceTest extends AbstractTest {
   }
 
   @Test
-  public void testFindByEmailWithAdminEmail() throws AccessDeniedException{
+  public void testFindByEmailWithAdminEmail() throws AccessDeniedException {
     mockAuthenticatedUser(buildTestAdmin());
     userService.findByEmail("gfl@acial.fr");
   }
@@ -81,6 +83,6 @@ public class UserServiceTest extends AbstractTest {
     mockAuthenticatedUser(buildTestUser());
     userService.findByEmail("juba.tidaf@gmail.com");
   }
-
+  
 
 }

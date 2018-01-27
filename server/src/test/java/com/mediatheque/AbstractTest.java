@@ -1,7 +1,6 @@
 package com.mediatheque;
 
-import com.mediatheque.model.Authority;
-import com.mediatheque.model.User;
+import com.mediatheque.model.*;
 import com.mediatheque.repository.UserRepository;
 import com.mediatheque.security.auth.AnonAuthentication;
 import com.mediatheque.security.auth.TokenBasedAuthentication;
@@ -63,7 +62,6 @@ public abstract class AbstractTest {
     }
 
 	protected User buildTestUser() {
-
 		User user = new User();
 		Authority userAuthority = new Authority();
 		userAuthority.setName("ROLE_USER");
@@ -89,5 +87,29 @@ public abstract class AbstractTest {
         return admin;
     }
 
+    protected Mediatheque buildMedia() {
+		Mediatheque mediatheque = new Mediatheque();
+		mediatheque.setName("Montreuil Media");
+		return mediatheque;
+	}
+
+	protected Localisation buildLocalization(){
+		Localisation localisation = new Localisation();
+		localisation.setSalle("1");
+		localisation.setRayon("Litterature");
+		return localisation;
+	}
+
+	protected Livre buildLivre(){
+		Livre document = new Livre();
+		document.setLocalization(buildLocalization());
+		document.setCode("1111-1111-1111-1111");
+		document.setAuthor("Ghiles");
+		document.setYear("2018");
+		document.setTitle("Test spring Application with Angular client");
+		document.setGender("Informatique");
+		document.setNbPage(350);
+		return document;
+	}
 
 }

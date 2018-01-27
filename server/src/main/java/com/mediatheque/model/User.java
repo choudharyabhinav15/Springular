@@ -1,19 +1,13 @@
 package com.mediatheque.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import com.mediatheque.util.Dateutil;
 import org.hibernate.validator.constraints.Email;
 import org.joda.time.DateTime;
 import org.springframework.security.core.GrantedAuthority;
@@ -40,6 +34,9 @@ public class User implements UserDetails, Serializable {
   @Column(name="email", unique = true)
   private String email;
 
+  @Column(name = "address")
+  private String address;
+
   @JsonIgnore
   @Column(name = "password")
   private String password;
@@ -49,7 +46,6 @@ public class User implements UserDetails, Serializable {
 
   @Column(name = "lastname")
   private String lastname;
-
 
   @Column(name="inscription_date", nullable = true)
   private String inscription;
@@ -64,11 +60,15 @@ public class User implements UserDetails, Serializable {
   @Column(name="current_loans")
   private int current;
 
+  @Column(name = "outdated_loans")
+  private int outdate_loan;
+
   public User() {
     this.current = 0;
     this.inscription = new DateTime().toString();
     this.max_loans = 24;
     this.loans = 0;
+    lesEmprunts = new ArrayList<FicheEmprunt>();
   }
 
   @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -76,6 +76,9 @@ public class User implements UserDetails, Serializable {
       joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
       inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
   private List<Authority> authorities;
+
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
+  private List<FicheEmprunt> lesEmprunts;
 
   public Long getId() {
     return id;
@@ -116,6 +119,30 @@ public class User implements UserDetails, Serializable {
   public void setLastname(String lastname) {
 
     this.lastname = lastname;
+  }
+
+  public String getAddress() {
+    return address;
+  }
+
+  public void setAddress(String address) {
+    this.address = address;
+  }
+
+  public int getOutdate_loan() {
+    return outdate_loan;
+  }
+
+  public void setOutdate_loan(int outdate_loan) {
+    this.outdate_loan = outdate_loan;
+  }
+
+  public List<FicheEmprunt> getLesEmprunts() {
+    return lesEmprunts;
+  }
+
+  public void setLesEmprunts(List<FicheEmprunt> lesEmprunts) {
+    this.lesEmprunts = lesEmprunts;
   }
 
   public String getEmail() {
@@ -192,4 +219,113 @@ public class User implements UserDetails, Serializable {
   public boolean isEnabled() {
     return true;
   }
+
+  /**
+   * <TT>peutEmprunter</TT> verifie si le client peut emprunter le
+   * document. Il peut le faire s'il n'a pas de document en retard de
+   * restitution ou s'il n'a pas atteint son nombre maximal d'emprunt.
+   * Si ce n'est pas le cas, elle retourne false.
+   * <P>
+   * Afin de distinguer les deux cas lors du retour, il serait
+   * souhaitable de lever une exception : a faire dans la prochaine
+   * version.
+   *   @return vrai si l'emprunt est possible, faux sinon
+   */
+  public boolean peutEmprunter() {
+    return outdate_loan <= 0 && current < max_loans;
+  }
+
+
+  /**
+   * <TT>emprunter</TT> teste si le client peut emprunter le
+   * document et leve une exception AssertionErrosi ce n'est pas
+   * le cas
+   * @throws Exception
+   * @see #peutEmprunter()
+   */
+  public void emprunter(FicheEmprunt emprunt) throws Exception {
+    assert peutEmprunter();
+    lesEmprunts.add(emprunt);
+    loans++;
+    current++;
+  }
+
+  /**
+   * <TT>emprunter</TT> pour version de client sans collection
+   */
+  public void emprunter() {
+    assert peutEmprunter();
+    loans++;
+    current++;
+  }
+
+  /**
+   * <TT>marquer</TT> interdit tout nouvel emprunt par le client.
+   * Cette fonction est appelee par <TT>verifier</TT> de
+   * la classe Emprunt.
+   *   @see FicheEmprunt#verifier()
+   */
+  public void marquer() throws Exception {
+    if(outdate_loan == current){
+      throw new Exception("Impossible d'avoir plus d'emprunts en retard que d'emprunts : "+this);
+    }
+    outdate_loan++;
+  }
+
+  /**
+   * <TT>restituer</TT> est appelee lors de la restitution d'un
+   * document emprunte. S'il s'agissait d'un emprunt en retard
+   * les mises a jour sont alors effectuees.
+   *   @param emprunt fiche d'emprunt associee correspondante
+   */
+  public void restituer(FicheEmprunt emprunt) throws Exception {
+    restituer(emprunt.getDepasse());
+    lesEmprunts.remove(emprunt);
+  }
+
+  /**
+   * <TT>restituer</TT> est appelee lors de la restitution d'un
+   * document emprunte. S'il s'agissait d'un emprunt en retard
+   * les mises a jour sont alors effectuees.
+   *   @param enRetard Indique si l'emprunt est marque en retard
+   */
+  public void restituer(boolean enRetard) throws Exception {
+    if(current == 0){
+      throw new Exception("Restituer sans emprunt "+ this);
+    }
+    current--;
+    if (enRetard) {
+      if(outdate_loan == 0){
+        throw new Exception("Restituer en retard sans retard "+ this);
+      }
+      outdate_loan--;
+    }
+  }
+
+  /**
+   * <TT>dateRetour</TT> retourne la date limite de restitution du
+   * document emprunte a partir de la date du jour et de la
+   * duree du pret.
+   *   @param jour Date du pret (date du jour)
+   *   @param duree Nombre de jours du pret
+   *   @return Date limite de restitution du document
+   */
+  public Date dateRetour(Date jour, int duree) {
+    duree = (int) ((double) duree * 1.8);
+    return Dateutil.addDate(jour, duree);
+  }
+
+  /**
+   * <TT>sommeDue</TT> permet de connaitre le tarif d'emprunt
+   * d'un document selon le type de ce document et le type de client.
+   * Le tarif pour un client a tarif normal est le tarif nominal, mais
+   * on se reserve la possibilite d'evolution. On suppose que le reglement
+   * est forcement effectue.
+   *   @param tarif Tarif nominal de l'emprunt du document
+   *   @return Tarif de l'emprunt
+   */
+  public double sommeDue(double tarif) {
+    return tarif * 2.5;
+  }
+
 }

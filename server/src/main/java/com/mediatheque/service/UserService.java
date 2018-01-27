@@ -6,7 +6,7 @@ import com.mediatheque.model.UserRequest;
 import com.mediatheque.model.UserUpdate;
 
 /**
- * Created by fan.jin on 2016-10-15.
+ * Created by Ghiles FEGHOUL on 28/12/2017.
  */
 public interface UserService {
   void resetCredentials();
