@@ -12,7 +12,7 @@ public class Livre extends Document {
 
     private int nbPage;
 
-    private final int duree = 6*7;
+    private final int duree = 6*5;
 
     private final double tarif = 0.5;
 

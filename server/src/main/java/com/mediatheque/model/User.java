@@ -283,7 +283,7 @@ public class User implements UserDetails, Serializable {
    */
   public void restituer(FicheEmprunt emprunt) throws Exception {
     restituer(emprunt.getDepasse());
-    lesEmprunts.remove(emprunt);
+    lesEmprunts.removeIf(value -> value.equals(emprunt));
   }
 
   /**
@@ -292,7 +292,7 @@ public class User implements UserDetails, Serializable {
    * les mises a jour sont alors effectuees.
    *   @param enRetard Indique si l'emprunt est marque en retard
    */
-  public void restituer(boolean enRetard) throws Exception {
+  private void restituer(boolean enRetard) throws Exception {
     if(current == 0){
       throw new Exception("Restituer sans emprunt "+ this);
     }
@@ -314,7 +314,6 @@ public class User implements UserDetails, Serializable {
    *   @return Date limite de restitution du document
    */
   public Date dateRetour(Date jour, int duree) {
-    duree = (int) ((double) duree * 1.8);
     return Dateutil.addDate(jour, duree);
   }
 

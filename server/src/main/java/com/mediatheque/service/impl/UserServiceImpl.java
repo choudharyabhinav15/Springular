@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByEmail(email);
     }
 
-   // @PreAuthorize("hasRole('ADMIN')")
+
   public User findById(Long id) throws AccessDeniedException {
     User u = userRepository.findOne(id);
     return u;
