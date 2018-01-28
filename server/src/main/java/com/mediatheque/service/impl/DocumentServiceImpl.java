@@ -5,6 +5,7 @@ import com.mediatheque.model.Localisation;
 import com.mediatheque.repository.DocumentRepository;
 import com.mediatheque.service.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,11 +21,13 @@ public class DocumentServiceImpl implements DocumentService {
     private DocumentRepository documentRepository;
 
     @Override
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public Document save(Document document) {
         return this.documentRepository.save(document);
     }
 
     @Override
+    @PreAuthorize("hasRole('ADMIN')")
     public Document update(Document document) {
         return this.documentRepository.saveAndFlush(document);
     }
@@ -40,6 +43,7 @@ public class DocumentServiceImpl implements DocumentService {
     }
 
     @Override
+    @PreAuthorize("hasRole('ADMIN')")
     public void remove(Long id) {
         this.documentRepository.delete(id);
     }

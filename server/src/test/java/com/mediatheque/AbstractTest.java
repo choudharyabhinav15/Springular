@@ -92,10 +92,23 @@ public abstract class AbstractTest {
 		mediatheque.setName("Montreuil Media");
 		return mediatheque;
 	}
-
+    
+    /*protected Document buildDocument() {
+		Document document = new Document();
+		//document.setId(1L);
+		document.setTitle("mon livre preferer");
+		//Localisation localisation = new Localisation();
+		//localisation.setId(1L);
+		//localisation.setSalle("2");
+		//localisation.setRayon("Litterature");
+		//document.setLocalization(localisation);
+		return document;
+	}
+*/
 	protected Localisation buildLocalization(){
 		Localisation localisation = new Localisation();
-		localisation.setSalle("1");
+		//localisation.setId(1L);
+		localisation.setSalle("2");
 		localisation.setRayon("Litterature");
 		return localisation;
 	}
@@ -111,5 +124,4 @@ public abstract class AbstractTest {
 		document.setNbPage(350);
 		return document;
 	}
-
 }

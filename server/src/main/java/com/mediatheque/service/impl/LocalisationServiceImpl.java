@@ -4,6 +4,7 @@ import com.mediatheque.model.Localisation;
 import com.mediatheque.repository.LocalisationRepository;
 import com.mediatheque.service.LocalisationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,11 +25,13 @@ public class LocalisationServiceImpl implements LocalisationService {
     }
 
     @Override
+    @PreAuthorize("hasRole('ADMIN')")
     public Localisation save(Localisation localisation) {
         return localisationRepository.save(localisation);
     }
 
     @Override
+    @PreAuthorize("hasRole('ADMIN')")
     public Localisation update(Localisation localisation) {
         return localisationRepository.saveAndFlush(localisation);
     }
@@ -39,6 +42,7 @@ public class LocalisationServiceImpl implements LocalisationService {
     }
 
     @Override
+    @PreAuthorize("hasRole('ADMIN')")
     public void remove(Long id) {
         localisationRepository.delete(id);
     }
