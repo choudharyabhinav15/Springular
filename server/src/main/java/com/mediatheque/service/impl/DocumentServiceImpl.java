@@ -8,7 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+/**
+ * @Author Ghiles FEGHOUL
+ * @Date 27/01/2018
+ * @Licence MIT
+ */
 @Service
 public class DocumentServiceImpl implements DocumentService {
 

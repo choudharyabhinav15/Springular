@@ -8,6 +8,8 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.mediatheque.util.Dateutil;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.Email;
 import org.joda.time.DateTime;
 import org.springframework.security.core.GrantedAuthority;
@@ -68,16 +70,17 @@ public class User implements UserDetails, Serializable {
     this.inscription = new DateTime().toString();
     this.max_loans = 24;
     this.loans = 0;
-    lesEmprunts = new ArrayList<FicheEmprunt>();
   }
 
-  @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @ManyToMany
+  @LazyCollection(LazyCollectionOption.FALSE)
   @JoinTable(name = "user_authority",
       joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
       inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
   private List<Authority> authorities;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
+  @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+  @LazyCollection(LazyCollectionOption.FALSE)
   private List<FicheEmprunt> lesEmprunts;
 
   public Long getId() {
@@ -328,4 +331,11 @@ public class User implements UserDetails, Serializable {
     return tarif * 2.5;
   }
 
+  @Override
+  public String toString() {
+    return lastname + " " + firstname + " " + address +  ", "
+            + "(nbe " + current + ") "
+            + "(nbed " + outdate_loan + ")"
+            +"(total "+loans+")";
+  }
 }

@@ -1,7 +1,11 @@
 package com.mediatheque.model;
 
 import javax.persistence.Entity;
-
+/**
+ * @Author Ghiles FEGHOUL
+ * @Date 26/01/2018
+ * @Licence MIT
+ */
 @Entity(name = "audios")
 public class Audio extends Document {
 

@@ -22,4 +22,6 @@ public interface UserService {
   User update(UserUpdate user);
 
   User save(UserRequest user);
+
+  User update(User user);
 }

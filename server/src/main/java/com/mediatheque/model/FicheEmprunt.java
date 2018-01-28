@@ -6,7 +6,11 @@ import org.hibernate.engine.internal.Cascade;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-
+/**
+ * @Author Ghiles FEGHOUL
+ * @Date 26/01/2018
+ * @Licence MIT
+ */
 @Entity(name = "emprunts")
 public class FicheEmprunt implements Serializable {
 
@@ -17,13 +21,13 @@ public class FicheEmprunt implements Serializable {
     @ManyToOne(cascade= CascadeType.ALL)
     private Mediatheque mediatheque;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private User client;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Document document;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Rappel rappel;
 
     private Date dateEmprunt;
@@ -33,6 +37,10 @@ public class FicheEmprunt implements Serializable {
     private boolean depasse;
 
     private static int nbEmpruntsTotal = 0;
+
+    public FicheEmprunt(){
+
+    }
 
     public FicheEmprunt(Mediatheque m, User c, Document d) throws Exception{
         mediatheque = m;

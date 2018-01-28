@@ -12,7 +12,7 @@ import org.springframework.security.access.AccessDeniedException;
 import java.util.List;
 
 /**
- * @Author Ghiles FEGHOUL
+ * @author Ghiles FEGHOUL
  * @Date 27/01/2018
  * @Licence MIT
  */

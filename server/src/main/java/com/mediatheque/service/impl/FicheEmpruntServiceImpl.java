@@ -8,7 +8,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+/**
+ * @Author Ghiles FEGHOUL
+ * @Date 27/01/2018
+ * @Licence MIT
+ */
 @Service
 public class FicheEmpruntServiceImpl implements FicheEmpruntService {
 
@@ -16,12 +20,12 @@ public class FicheEmpruntServiceImpl implements FicheEmpruntService {
     private FicheEmpruntRepository ficheEmpruntRepository;
 
     @Override
-    @PreAuthorize("hasRole('ADMIN')")
     public FicheEmprunt find(Long id) {
         return ficheEmpruntRepository.findOne(id);
     }
 
     @Override
+    @PreAuthorize("hasRole('USER')")
     public FicheEmprunt save(FicheEmprunt ficheEmprunt) {
         return ficheEmpruntRepository.save(ficheEmprunt);
     }

@@ -6,6 +6,11 @@ import com.mediatheque.service.Empruntable;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ * @Author Ghiles FEGHOUL
+ * @Date 26/01/2018
+ * @Licence MIT
+ */
 @Entity(name = "documents")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Document implements Empruntable, Serializable {
@@ -30,7 +35,7 @@ public abstract class Document implements Empruntable, Serializable {
 
     protected int nbEmprunt;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     protected Localisation localization;
 
     protected int nbEmpruntTotal = 0;

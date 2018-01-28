@@ -5,7 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
-
+/**
+ * @Author Ghiles FEGHOUL
+ * @Date 26/01/2018
+ * @Licence MIT
+ */
 @Entity(name = "mediatheques")
 public class Mediatheque implements Serializable {
 

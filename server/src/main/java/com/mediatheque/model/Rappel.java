@@ -5,7 +5,11 @@ import com.mediatheque.util.Dateutil;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-
+/**
+ * @Author Ghiles FEGHOUL
+ * @Date 26/01/2018
+ * @Licence MIT
+ */
 @Entity(name = "rappels")
 public class Rappel implements Serializable{
 
@@ -23,7 +27,7 @@ public class Rappel implements Serializable{
      */
     private Date dateRappel;
 
-
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private FicheEmprunt enRetard;
 
     // Les methodes

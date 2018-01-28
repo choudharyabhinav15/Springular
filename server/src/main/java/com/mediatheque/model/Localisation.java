@@ -4,6 +4,11 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @Author Ghiles FEGHOUL
+ * @Date 26/01/2018
+ * @Licence MIT
+ */
 @Entity(name = "localizations")
 public class Localisation {
 
@@ -20,7 +25,7 @@ public class Localisation {
     }
 
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "localization")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "localization",cascade = CascadeType.ALL)
     private List<Document> documents;
 
     public Long getId() {

@@ -83,6 +83,6 @@ public class UserServiceTest extends AbstractTest {
     mockAuthenticatedUser(buildTestUser());
     userService.findByEmail("juba.tidaf@gmail.com");
   }
-  
+
 
 }

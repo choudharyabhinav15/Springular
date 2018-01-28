@@ -8,7 +8,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+/**
+ * @Author Ghiles FEGHOUL
+ * @Date 27/01/2018
+ * @Licence MIT
+ */
 @Service
 public class MediathequeServiceImpl implements MediathequeService {
 

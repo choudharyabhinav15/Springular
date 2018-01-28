@@ -10,9 +10,13 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+/**
+ * @Author Ghiles FEGHOUL
+ * @Date 27/01/2018
+ * @Licence MIT
+ */
 @RestController
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class LocalisationController {
