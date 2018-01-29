@@ -21,6 +21,7 @@ import java.util.Map;
  */
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 @RequestMapping( value = "/api", produces = MediaType.APPLICATION_JSON_VALUE )
 public class AuthenticationController {
 

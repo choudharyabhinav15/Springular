@@ -3,7 +3,7 @@
   <mat-card elevation="5" fxFlex>
 
     <mat-card-subtitle>
-      <h2>Angular Spring Starter</h2>
+      <h2>MédiaTECH</h2>
     </mat-card-subtitle>
 
     <mat-card-title>
@@ -16,22 +16,23 @@
 
       <form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #signupForm="ngForm">
         <mat-input-container>
-          <label>Username: </label>
+          <label>Nom d'utilisateur: </label>
           <input matInput formControlName="username" required>
         </mat-input-container>
         <mat-input-container>
-          <input matInput formControlName="email" required type="email" placeholder="ex : yourname@gmail.com">
+          <label>Email</label>
+          <input matInput formControlName="email" required type="email">
         </mat-input-container>
         <mat-input-container>
-          <label>Password: </label>
+          <label>Mot de passe: </label>
           <input matInput formControlName="password" required type="password">
         </mat-input-container>
         <mat-input-container>
-          <label>First Name: </label>
+          <label>Prénom: </label>
           <input matInput formControlName="firstname" required>
         </mat-input-container>
         <mat-input-container>
-          <label>Last Name: </label>
+          <label>Nom: </label>
           <input matInput formControlName="lastname" required>
         </mat-input-container>
         <button type="submit" [disabled]="!signupForm.form.valid" mat-raised-button color="primary">Sign up</button>
@@ -42,14 +43,8 @@
       <br>
       <hr>
 
-      <p>
-        <i>Created by
-          <a href="https://github.com/bfwg">Fan Jin</a>
-        </i>
-      </p>
-      <p>
-        <i>Click below to go to repository</i>
-      </p>
+      <p><i>Crée par <a href="https://github.com/ghilesfeghoul">Ghiles FEGHOUL</a></i></p>
+      <p><i>Cliquer pour visiter mon Github</i></p>
       <button (click)="repository()" mat-raised-button color="accent">GitHub Repository</button>
 
     </mat-card-content>

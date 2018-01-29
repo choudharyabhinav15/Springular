@@ -18,6 +18,7 @@ import java.util.Map;
  * @Licence MIT
  */
 @RestController
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class LocalisationController {
 

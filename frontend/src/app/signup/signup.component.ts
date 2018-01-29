@@ -18,8 +18,8 @@ import { Subject } from 'rxjs/SUbject';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit, OnDestroy {
-  title = 'Sign up';
-  githubLink = 'https://github.com/bfwg/angular-spring-starter';
+  title = 'Inscription';
+  githubLink = 'https://github.com/ghilesfeghoul/Springular';
   form: FormGroup;
 
   /**
@@ -60,7 +60,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       username: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(32)])],
-      firstname:[''],
+      firstname: [''],
       lastname: ['']
     });
   }
