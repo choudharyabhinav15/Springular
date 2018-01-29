@@ -13,6 +13,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,6 +29,11 @@ public class DocumentController {
     @Autowired
     private DocumentServiceImpl documentService;
 
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/document")
+    public List<Document> allDocument(@RequestBody Livre document){
+        return documentService.findAll();
+    }
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(method = RequestMethod.POST, value = "/document")
     public ResponseEntity<?> addDocument(@RequestBody Livre document){
