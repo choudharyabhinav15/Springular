@@ -31,7 +31,7 @@ public class DocumentController {
 
     
     @RequestMapping(method = RequestMethod.GET, value = "/document")
-    public List<Document> allDocument(@RequestBody Livre document){
+    public List<Document> allDocument(){
         return documentService.findAll();
     }
     @PreAuthorize("hasRole('ADMIN')")
