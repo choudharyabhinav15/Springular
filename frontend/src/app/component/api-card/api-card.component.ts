@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {ApiService} from '../../service';
+import {ConfigService} from '../../service/config.service';
 
 @Component({
   selector: 'app-api-card',
@@ -7,13 +9,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ApiCardComponent implements OnInit {
 
+  @Input() path: string;
   @Input() title: string;
-  @Input() subTitle: string;
+  @Input() author: string;
+  @Input() gender: string;
+  @Input() year: string;
   @Input() imgUrl: string;
-  @Input() content: string;
-  @Input() apiText: string;
-  @Input() responseObj: any;
-  expand = false;
+  @Input() tarif: string;
+  @Input() nb_page: string;
 
 
   @Output() apiClick: EventEmitter<any> = new EventEmitter();
@@ -21,15 +24,13 @@ export class ApiCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.responseObj);
+   // console.log(this.responseObj);
+  }
+  onEmpruntClick() {
+    this.apiClick.next(this.path)
   }
 
-  onButtonClick() {
-    this.expand = true;
-    this.apiClick.next(this.apiText);
-  }
-
-  responsePanelClass() {
+  /* responsePanelClass() {
     const rClass = ['response'];
     if (this.expand) {
       rClass.push('expand');
@@ -40,6 +41,6 @@ export class ApiCardComponent implements OnInit {
         rClass.push('response-error');
     }
     return rClass.join(' ');
-  }
+  } */
 
 }

@@ -28,6 +28,10 @@ export class ConfigService {
 
   private _account_url = this._api_url + '/user/my-account';
 
+  private _document_url = this._api_url + '/document';
+
+  private _documents_url = this._document_url + '/all';
+
   get reset_credentials_url(): string {
       return this._reset_credentials_url;
   }
@@ -60,7 +64,7 @@ export class ConfigService {
       return this._foo_url;
   }
 
-  get signup_url():string {
+  get signup_url(): string {
       return this._signup_url;
   }
 
@@ -68,4 +72,7 @@ export class ConfigService {
     return this._account_url;
   }
 
+  get documents_url(): string {
+    return this._documents_url;
+  }
 }

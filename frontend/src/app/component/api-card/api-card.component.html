@@ -1,26 +1,33 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title><b>{{title}}</b></mat-card-title>
-    <mat-card-subtitle>{{subTitle}}</mat-card-subtitle>
+    <mat-card-subtitle>{{gender}}</mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image [src]="imgUrl">
   <mat-card-content>
     <p>
-      {{content}}
+      Pour plus d'informations cliquez sur Détails
     </p>
   </mat-card-content>
   <mat-card-actions>
     <button
       mat-raised-button
       color="primary"
-      (click)="onButtonClick()">
-      {{apiText}}
+      (click)="onDetailClick()">
+      Détails
+    </button>
+    <button *ngIf="currentUser"
+      mat-raised-button
+      color="secondary"
+      (click)="onEmpruntClick()">
+      Emprunter
     </button>
   </mat-card-actions>
-  <div [class]="responsePanelClass()">
-    <pre>Path: {{responseObj.path}}</pre>
-    <pre>Method: {{responseObj.method}}</pre>
-    <pre>Status: {{responseObj.status}}</pre>
-    <pre>Message: {{responseObj.body || responseObj.message}} </pre>
+  <div>
+    <pre style="display: none">{{path}}</pre>
+    <pre>Auteur: {{author}}</pre>
+    <pre>Année: {{year}}</pre>
+    <pre>Nombre de pages: {{nb_page}}</pre>
+    <pre>Tarif d'emprunt: {{tarif}} </pre>
   </div>
 </mat-card>

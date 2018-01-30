@@ -116,6 +116,7 @@ public abstract class AbstractTest {
 	protected Livre buildLivre(){
 		Livre document = new Livre();
 		document.setLocalization(buildLocalization());
+		document.setMediatheque(buildMedia());
 		document.setCode("1111-1111-1111-1111");
 		document.setAuthor("Ghiles");
 		document.setYear("2018");

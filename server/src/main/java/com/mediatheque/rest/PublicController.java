@@ -1,8 +1,10 @@
 package com.mediatheque.rest;
 
-import com.mediatheque.model.Document;
-import com.mediatheque.model.Localisation;
-import com.mediatheque.model.Mediatheque;
+import com.mediatheque.model.*;
+import com.mediatheque.repository.AudioRepository;
+import com.mediatheque.repository.GameRepository;
+import com.mediatheque.repository.LivreRepository;
+import com.mediatheque.repository.VideoRepository;
 import com.mediatheque.service.impl.DocumentServiceImpl;
 import com.mediatheque.service.impl.LocalisationServiceImpl;
 import com.mediatheque.service.impl.MediathequeServiceImpl;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +38,19 @@ public class PublicController {
     @Autowired
     private LocalisationServiceImpl localisationService;
 
-    @GetMapping("/localizations")
+    @Autowired
+    AudioRepository audioRepository;
+
+    @Autowired
+    LivreRepository livreRepository;
+
+    @Autowired
+    GameRepository gameRepository;
+
+    @Autowired
+    VideoRepository videoRepository;
+
+    @GetMapping("/localization/all")
     public List<Localisation> getLocalisations(){
         return localisationService.findAll();
     }
@@ -54,9 +69,9 @@ public class PublicController {
     }
 
 
-    @RequestMapping(method = GET, value = "/")
-    public List<Document> index(){
-        return documentService.findAll();
+    @RequestMapping(method = GET, value = "/document/all")
+    public List<Livre> index(){
+        return livreRepository.findAll();
     }
 
     @GetMapping("/medias")

@@ -13,7 +13,7 @@ import {
   MatCardModule,
   MatInputModule,
   MatIconRegistry,
-  MatProgressSpinnerModule, MatDatepickerInput
+  MatProgressSpinnerModule,
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -36,13 +36,15 @@ import {
   AuthService,
   UserService,
   FooService,
-  ConfigService
+  ConfigService,
+  DocumentService
 } from './service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AdminComponent } from './admin/admin.component';
 import { SignupComponent } from './signup/signup.component';
 import { AccountComponent } from './account/account.component';
+
 
 export function initUserFactory(userService: UserService) {
     return () => userService.initUser();
@@ -93,6 +95,7 @@ export function initUserFactory(userService: UserService) {
     UserService,
     ConfigService,
     MatIconRegistry,
+    DocumentService,
     {
       'provide': APP_INITIALIZER,
       'useFactory': initUserFactory,

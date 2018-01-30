@@ -1,5 +1,9 @@
 package com.mediatheque.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 /**
  * @Author Ghiles FEGHOUL
@@ -7,6 +11,8 @@ import javax.persistence.Entity;
  * @Licence MIT
  */
 @Entity(name = "videos")
+@DiscriminatorValue("video")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 public class Video extends Document {
 
     private int dureeFilm;
@@ -21,12 +27,16 @@ public class Video extends Document {
         return 0;
     }
 
-
     @Override
     public double tarifEmprunt() {
         return 0;
     }
 
+    public Video(){
+        this.emprunte = false;
+        this.nbEmprunt = 0;
+        this.empruntable = true;
+    }
 
     public Long getId() {
         return id;
@@ -106,14 +116,6 @@ public class Video extends Document {
 
     public void setLocalization(Localisation localization) {
         this.localization = localization;
-    }
-
-    public int getNbEmpruntTotal() {
-        return nbEmpruntTotal;
-    }
-
-    public void setNbEmpruntTotal(int nbEmpruntTotal) {
-        this.nbEmpruntTotal = nbEmpruntTotal;
     }
 
 }

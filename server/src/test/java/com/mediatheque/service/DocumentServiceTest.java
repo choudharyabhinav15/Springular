@@ -27,11 +27,15 @@ public class DocumentServiceTest extends AbstractTest {
 	
 	@Autowired
 	LocalisationServiceImpl localisationService;
-	
+
+	@Autowired
+    MediathequeService mediathequeService;
+
 	@Test(expected = AccessDeniedException.class)
     public void testAddDocuementWithUser() throws AccessDeniedException{
         mockAuthenticatedUser(buildTestUser());
         localisationService.save(buildLocalization());
+        mediathequeService.save(buildMedia());
         Document document = this.buildLivre();
         documentService.save(document);
     }
@@ -39,6 +43,7 @@ public class DocumentServiceTest extends AbstractTest {
 	@Test(expected = AccessDeniedException.class)
     public void testAddDocumentWithoutUser() throws AccessDeniedException{
 		localisationService.save(buildLocalization());
+		mediathequeService.save(buildMedia());
 		documentService.save(buildLivre());
     }
 	
@@ -46,6 +51,7 @@ public class DocumentServiceTest extends AbstractTest {
     public void testAddDocumentWithAdmi() throws AccessDeniedException{
         mockAuthenticatedUser(buildTestAdmin());
         localisationService.save(buildLocalization());
+        mediathequeService.save(buildMedia());
         Document document = buildLivre();
         documentService.save(document);
         Document doc = documentService.find(document.getId());
@@ -103,18 +109,18 @@ public class DocumentServiceTest extends AbstractTest {
     
     
     @Test(expected = AccessDeniedException.class)
-    public void testDeleteMediaWithoutUser() throws AccessDeniedException{
+    public void testDeleteDocumentWithoutUser() throws AccessDeniedException{
     	documentService.remove(1L);
     }
 
     @Test(expected = AccessDeniedException.class)
-    public void testDeleteMediaWithUser() throws AccessDeniedException{
+    public void testDeleteDocumentWithUser() throws AccessDeniedException{
         mockAuthenticatedUser(buildTestUser());
         documentService.remove(1L);
     }
         
     @Test
-    public void testUpdateMediaWithAdminn() throws AccessDeniedException{
+    public void testUpdateDocumentWithAdminn() throws AccessDeniedException{
         mockAuthenticatedUser(buildTestAdmin());
         Document document = documentService.find(1L);
         document.setTitle("Update document Test");

@@ -1,5 +1,9 @@
 package com.mediatheque.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 /**
@@ -7,7 +11,9 @@ import javax.persistence.Entity;
  * @Date 26/01/2018
  * @Licence MIT
  */
-@Entity(name = "livres")
+@Entity(name = "book")
+@DiscriminatorValue("book")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 public class Livre extends Document {
 
     private int nbPage;
@@ -16,13 +22,12 @@ public class Livre extends Document {
 
     private final double tarif = 0.5;
 
-    public int getStat() { return nbEmpruntTotal; }
-
     public Livre(){
         this.emprunte = false;
         this.nbEmprunt = 0;
         this.empruntable = true;
     }
+
     @Override
     public int dureeEmprunt() {
         return duree;
@@ -129,11 +134,4 @@ public class Livre extends Document {
         this.localization = localization;
     }
 
-    public int getNbEmpruntTotal() {
-        return nbEmpruntTotal;
-    }
-
-    public void setNbEmpruntTotal(int nbEmpruntTotal) {
-        this.nbEmpruntTotal = nbEmpruntTotal;
-    }
 }

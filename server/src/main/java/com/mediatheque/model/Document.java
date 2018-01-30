@@ -1,6 +1,8 @@
 package com.mediatheque.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.mediatheque.service.Empruntable;
 
 import javax.persistence.*;
@@ -12,7 +14,9 @@ import java.io.Serializable;
  * @Licence MIT
  */
 @Entity(name = "documents")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "document_type")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 public abstract class Document implements Empruntable, Serializable {
 
     @Id
@@ -38,8 +42,8 @@ public abstract class Document implements Empruntable, Serializable {
     @ManyToOne(cascade = CascadeType.ALL)
     protected Localisation localization;
 
-    protected int nbEmpruntTotal = 0;
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    protected Mediatheque mediatheque;
 
     public Long getId() {
         return id;
@@ -79,10 +83,6 @@ public abstract class Document implements Empruntable, Serializable {
 
     public Localisation getLocalization() {
         return localization;
-    }
-
-    public int getNbEmpruntTotal() {
-        return nbEmpruntTotal;
     }
 
     public void setId(Long id) {
@@ -125,8 +125,12 @@ public abstract class Document implements Empruntable, Serializable {
         this.localization = localization;
     }
 
-    public void setNbEmpruntTotal(int nbEmpruntTotal) {
-        this.nbEmpruntTotal = nbEmpruntTotal;
+    public Mediatheque getMediatheque() {
+        return mediatheque;
+    }
+
+    public void setMediatheque(Mediatheque mediatheque) {
+        this.mediatheque = mediatheque;
     }
 
     /**

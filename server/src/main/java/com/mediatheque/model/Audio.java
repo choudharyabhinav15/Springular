@@ -1,5 +1,9 @@
 package com.mediatheque.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 /**
  * @Author Ghiles FEGHOUL
@@ -7,15 +11,13 @@ import javax.persistence.Entity;
  * @Licence MIT
  */
 @Entity(name = "audios")
+@DiscriminatorValue("audio")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 public class Audio extends Document {
 
     private static final int duree = 4*7;
 
     private final double tarif = 1.0;
-
-    public int getStat(){
-        return nbEmpruntTotal;
-    }
 
     @Override
     public int dureeEmprunt() {
@@ -25,6 +27,12 @@ public class Audio extends Document {
     @Override
     public double tarifEmprunt() {
         return tarif;
+    }
+
+    public Audio(){
+        this.emprunte = false;
+        this.nbEmprunt = 0;
+        this.empruntable = true;
     }
 
     public static int getDuree() {
@@ -116,11 +124,4 @@ public class Audio extends Document {
         this.localization = localization;
     }
 
-    public int getNbEmpruntTotal() {
-        return nbEmpruntTotal;
-    }
-
-    public void setNbEmpruntTotal(int nbEmpruntTotal) {
-        this.nbEmpruntTotal = nbEmpruntTotal;
-    }
 }

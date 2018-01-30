@@ -1,16 +1,22 @@
 package com.mediatheque.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Author Ghiles FEGHOUL
  * @Date 26/01/2018
  * @Licence MIT
  */
 @Entity(name = "mediatheques")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 public class Mediatheque implements Serializable {
 
     @Id
@@ -35,5 +41,19 @@ public class Mediatheque implements Serializable {
 
     private String name;
 
+    @OneToMany(mappedBy = "mediatheque", cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Document> documents;
 
+    public List<Document> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<Document> documents) {
+        this.documents = documents;
+    }
+
+    public Mediatheque(){
+        documents = new ArrayList<Document>();
+    }
 }
