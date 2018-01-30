@@ -1,33 +1,24 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title><b>{{title}}</b></mat-card-title>
-    <mat-card-subtitle>{{gender}}</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image [src]="imgUrl">
-  <mat-card-content>
-    <p>
-      Pour plus d'informations cliquez sur Détails
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" [src]="imgUrl" alt="Document image">
+  <div class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+    <p class="card-text">Par : {{author}} en {{year}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" style="display: none">Id : {{path}}</li>
+    <li class="list-group-item">Genre : {{gender}}</li>
+    <li class="list-group-item">Tarif d'emprunt : {{tarif}}</li>
+  </ul>
+  <div class="card-body">
     <button
-      mat-raised-button
-      color="primary"
+      class="btn btn-dark"
       (click)="onDetailClick()">
       Détails
     </button>
     <button *ngIf="currentUser"
-      mat-raised-button
-      color="secondary"
-      (click)="onEmpruntClick()">
+            class="btn btn-info"
+            (click)="onEmpruntClick()">
       Emprunter
     </button>
-  </mat-card-actions>
-  <div>
-    <pre style="display: none">{{path}}</pre>
-    <pre>Auteur: {{author}}</pre>
-    <pre>Année: {{year}}</pre>
-    <pre>Nombre de pages: {{nb_page}}</pre>
-    <pre>Tarif d'emprunt: {{tarif}} </pre>
   </div>
-</mat-card>
+</div>

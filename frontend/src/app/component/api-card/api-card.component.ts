@@ -16,7 +16,6 @@ export class ApiCardComponent implements OnInit {
   @Input() year: string;
   @Input() imgUrl: string;
   @Input() tarif: string;
-  @Input() nb_page: string;
 
 
   @Output() apiClick: EventEmitter<any> = new EventEmitter();

@@ -1,45 +1,15 @@
-<div class="jumbotron">
-  <h3 class="text-center">LOL</h3>
-</div>
-<div style="margin-top: 15px" class="content" fxLayout="row margin"  fxLayoutAlign="center none" *ngFor="let document of documents; let iteration = index">
+<div class="row col-lg-12">
+<div class="col-lg-4" *ngFor="let document of documents">
   <app-api-card
-    fxFlex
     path={{document.id}}
     title={{document.title}}
-    gender="Genre : {{document.gender}}"
+    gender={{document.gender}}
     imgUrl="assets/image/login-logo.png"
     author={{document.author}}
     year={{document.year}}
-    nb_page={{document.nb_page}}
-    tarif={{document.tarif}}
-    (apiClick)="makeRequest($event)"
-  >
-  </app-api-card>
-  <app-api-card
-    fxFlex
-    path={{document.id}}
-    title={{document.title}}
-    gender="Genre : {{document.gender}}"
-    imgUrl="assets/image/login-logo.png"
-    author={{document.author}}
-    year={{document.year}}
-    nb_page={{document.nb_page}}
-    tarif={{document.tarif}}
-    (apiClick)="makeRequest($event)"
-  >
-  </app-api-card>
-  <app-api-card
-    fxFlex
-    path={{document.id}}
-    title={{document.title}}
-    gender="Genre : {{document.gender}}"
-    imgUrl="assets/image/login-logo.png"
-    author={{document.author}}
-    year={{document.year}}
-    nb_page={{document.nb_page}}
-    tarif={{document.tarif}}
+    tarif="{{document.tarif}} €"
     (apiClick)="makeRequest($event)"
   >
   </app-api-card>
 </div>
-<br>
+</div>
