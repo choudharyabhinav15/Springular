@@ -1,5 +1,6 @@
 package com.mediatheque.rest;
 
+import com.mediatheque.model.Document;
 import com.mediatheque.model.Mediatheque;
 import com.mediatheque.service.impl.MediathequeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,6 @@ public class MediathequeController {
 
     @Autowired
     private MediathequeServiceImpl mediathequeService;
-
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/media")

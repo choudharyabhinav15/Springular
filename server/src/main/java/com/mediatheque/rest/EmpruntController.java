@@ -38,7 +38,7 @@ public class EmpruntController {
      private RappelServiceImpl rappelService;
 
      @PreAuthorize("hasRole('USER')")
-     @GetMapping("/emprunt/[idUser}/{idDoc}/{idMedia}")
+     @GetMapping("/emprunt/{idUser}/{idDoc}/{idMedia}")
      public ResponseEntity<FicheEmprunt> addFiche(@PathVariable Long idUser, @PathVariable Long idDoc, @PathVariable Long idMedia) throws Exception {
           User user = userService.findById(idUser);
           Document document = documentService.find(idDoc);

@@ -29,7 +29,7 @@ public class DocumentController {
     @Autowired
     private DocumentServiceImpl documentService;
 
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(method = RequestMethod.GET, value = "/document")
     public List<Document> allDocument(){
         return documentService.findAll();

@@ -19,5 +19,4 @@ public interface RappelService {
     List<Rappel> findAll();
 
     void remove(Long id);
-
 }

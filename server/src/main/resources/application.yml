@@ -12,3 +12,4 @@ logging:
     org.springframework.web: ERROR
     com.bfwg: DEBUG
 
+
