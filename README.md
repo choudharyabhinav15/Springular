@@ -21,7 +21,7 @@
 ```bash
 # clone our repo
 # --depth 1 removes all but one .git commit history
-git clone --depth 1 https://github.com/bfwg/angular-spring-starter.git
+git clone --depth 1 https://github.com/ghilesfeghoul/Springular.git
 
 # change directory to the repo's frontend folder
 cd angular-spring-starter/frontend
