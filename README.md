@@ -1,61 +1,21 @@
 [![Build Status](https://travis-ci.org/ghilesfeghoul/Springular.svg?branch=master)](https://travis-ci.org/ghilesfeghoul/Springular)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bfwg/angular-spring-jwt-starter/blob/master/LICENSE)
 
-<p align="center">
-  <a href="http://angular-spring-starter.fanjin.io" target="_blank">
-    <img src="https://cloud.githubusercontent.com/assets/12819525/26094670/b0f6f192-39cf-11e7-8048-ab710b3dc1d1.png" alt="Spring Boot and Angular 2" width="500" height="320"/>
-  </a>
+<p align="center"> 
+   <img src="https://cloud.githubusercontent.com/assets/12819525/26094670/b0f6f192-39cf-11e7-8048-ab710b3dc1d1.png" alt="Spring Boot and Angular 2" width="500" height="320"/>
 </p>
 
-# Angular4 Spring Boot JWT Starter
+# Angular4 Spring Boot Project
 > An Angular full stack starter kit featuring [Angular 4](https://angular.io), [Router](https://angular.io/docs/ts/latest/guide/router.html), [Forms](https://angular.io/docs/ts/latest/guide/forms.html),
 [Http](https://angular.io/docs/ts/latest/guide/server-communication.html),
 [Services](https://gist.github.com/gdi2290/634101fec1671ee12b3e#_follow_@AngularClass_on_twitter),
 [Spring boot](https://projects.spring.io/spring-boot/),
-[JSON Web Token](https://jwt.io/)
+[JSON Web Token](https://jwt.io/) for an university project.
 
-
-## Quick start
-**Make sure you have Maven and Java 1.7 or greater**
-**Make sure you also have NPM 3.1, Node 6.9.5 and angular-cli@1.0.0 globally installed**
-```bash
-# clone our repo
-# --depth 1 removes all but one .git commit history
-git clone --depth 1 https://github.com/ghilesfeghoul/Springular.git
-
-# change directory to the repo's frontend folder
-cd angular-spring-starter/frontend
-
-# install the frontend dependencies with npm
-# npm install @angular/cli@1.0.0 -g
-npm install
-
-# start the frontend app
-npm start
-
-# change directory to the repo's backend folder
-cd ../server
-
-# install the server dependencies with mvn
-mvn install
-
-# start the backend server
-mvn spring-boot:run
-
-# the fronend angular app will be running on port 4200
-# the spring-boot server will be running on port 8080
-```
-
-There are two user accounts present to demonstrate the different levels of access to the endpoints in
-the API and the different authorization exceptions:
-```
-Admin - admin:123
-User - user:123
-```
-For more detailed configuration/documentation, please check out the [frontend][frontend-doc] and [server][server-doc] folder.
 
 ## Deployment
-
+**Make sure you have Maven and Java 1.7 or greater**
+**Make sure you also have NPM 3.1, Node 6.9.5 and angular-cli@1.6.0 globally installed**
 ```bash
 # clone our repo
 # --depth 1 removes all but one .git commit history
@@ -84,6 +44,15 @@ mvn spring-boot:run
 ```
 For more deployment related info checkout here: [DEPLOYMENT DOC](https://angular.io/docs/ts/latest/guide/deployment.html)
 
+For more detailed configuration/documentation, please check out the [frontend][frontend-doc] and [server][server-doc] folder.
+
+There are two user accounts present to demonstrate the different levels of access to the endpoints in
+the API and the different authorization exceptions:
+```
+Admin - admin:123
+User - user:123
+```
+
 ### JSON Web Token
 > JSON Web Tokens are an open, industry standard RFC 7519 method for representing claims securely between two parties.
 for more info, check out https://jwt.io/
@@ -103,8 +72,10 @@ for more info, check out https://jwt.io/
 8. Choose "Create module from existing sources" and continue in the dialog until the module is added.
 9. You should now see both (frontend and backend) modules in the Project view
 
-### Contributing
-I'll accept pretty much everything so feel free to open a Pull-Request
+### Contributors
+-[Ghiles FEGHOUL](https://github.com/ghilesfeghoul)
+-[Juba TIDAF](https://github.com/jubatidaf)
+-[Islam GUETTOUCHE](https://github.com/guettouche)
 
 This project is inspired by
 - [Stormpath](https://stormpath.com/blog/token-auth-spa)
@@ -117,8 +88,7 @@ ___
  [MIT](/LICENSE)
 
 
-[frontend-doc]: https://github.com/bfwg/angular-spring-jwt-starter/tree/master/frontend
-[server-doc]: https://github.com/bfwg/angular-spring-jwt-starter/tree/master/server
+[frontend-doc]: https://github.com/ghilesfeghoul/Springular/tree/master/frontend
+[server-doc]: https://github.com/ghilesfeghoul/Springular/tree/master/server
 [status-image]: https://img.shields.io/badge/status-maintained-brightgreen.svg
-[status-url]: https://github.com/bfwg/angular-spring-jwt-starter
 
