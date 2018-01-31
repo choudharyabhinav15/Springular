@@ -32,7 +32,7 @@ export class ConfigService {
 
   private _mediatheque_url = this._api_url + '/media';
 
-  private _mediatheques_url = this._mediatheque_url + '/s';
+  private _mediatheques_url = this._mediatheque_url + 's';
 
   private _emprunt_url = this._api_url + '/emprunt';
   private  _emprunts_url = this._emprunt_url + '/all';

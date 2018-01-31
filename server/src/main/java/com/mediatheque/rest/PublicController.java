@@ -56,13 +56,6 @@ public class PublicController {
     }
 
 
-    @RequestMapping( method = GET, value= "/foo")
-    public Map<String, String> getFoo() {
-        Map<String, String> fooObj = new HashMap<>();
-        fooObj.put("foo", "bar");
-        return fooObj;
-    }
-
     @RequestMapping(method = RequestMethod.GET,value = "/document/{id}")
     public Document getDocument(@PathVariable Long id){
         return documentService.find(id);
