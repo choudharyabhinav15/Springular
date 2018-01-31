@@ -48,6 +48,10 @@ import { AdminComponent } from './admin/admin.component';
 import { SignupComponent } from './signup/signup.component';
 import { AccountComponent } from './account/account.component';
 import {MediathequeService} from './service/mediatheque.service';
+import { MediaAllComponent } from './mediatheque/media-all/media-all.component';
+import { DocAllComponent } from './document/doc-all/doc-all.component';
+import { LocAddComponent } from './localisation/loc-add/loc-add.component';
+import { EmpAllComponent } from './emprunt/emp-all/emp-all.component';
 
 
 
@@ -71,7 +75,11 @@ export function initUserFactory(userService: UserService) {
     AdminComponent,
     SignupComponent,
     AccountComponent,
-    MediaAddComponent
+    MediaAddComponent,
+    MediaAllComponent,
+    DocAllComponent,
+    LocAddComponent,
+    EmpAllComponent
   ],
   imports: [
     BrowserAnimationsModule,

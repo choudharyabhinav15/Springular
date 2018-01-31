@@ -54,7 +54,7 @@ export class AccountComponent implements OnInit {
       id:[this.user.id],
       username: [this.user.username],
       email: [this.user.email, Validators.email],
-      firstname:[this.user.firstname],
+      firstname: [this.user.firstname],
       lastname: [this.user.lastname]
     });
   }
@@ -83,7 +83,7 @@ export class AccountComponent implements OnInit {
         },
         error => {
           this.submitted = false;
-          console.log("Update error" + JSON.stringify(error));
+          console.log('Update error' + JSON.stringify(error));
           this.notification = { msgType: 'error', msgBody: error['error'].errorMessage };
         });
 

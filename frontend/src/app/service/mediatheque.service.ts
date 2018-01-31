@@ -25,5 +25,9 @@ export class MediathequeService {
       console.log('Media added successfully');
     });
   }
+  remove(id) {
+    console.log('Removing the media which id is ' + id);
+    return this.apiService.delete(this.config.mediatheque_url + '/' + id);
+  }
 
 }

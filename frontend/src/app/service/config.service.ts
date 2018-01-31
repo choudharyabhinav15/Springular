@@ -22,8 +22,6 @@ export class ConfigService {
 
   private _reset_credentials_url = this._user_url + '/reset-credentials';
 
-  private _foo_url = this._api_url + '/foo';
-
   private _signup_url = this._api_url + '/signup';
 
   private _account_url = this._api_url + '/user/my-account';
@@ -36,6 +34,8 @@ export class ConfigService {
 
   private _mediatheques_url = this._mediatheque_url + '/s';
 
+  private _emprunt_url = this._api_url + '/emprunt';
+  private  _emprunts_url = this._emprunt_url + '/all';
   get reset_credentials_url(): string {
       return this._reset_credentials_url;
   }
@@ -63,11 +63,6 @@ export class ConfigService {
   get change_password_url(): string {
       return this._change_password_url;
   }
-
-  get foo_url(): string {
-      return this._foo_url;
-  }
-
   get signup_url(): string {
       return this._signup_url;
   }
@@ -85,5 +80,17 @@ export class ConfigService {
 
   get mediatheque_url(): string {
     return this._mediatheque_url;
+  }
+
+  get document_url(): string {
+    return this._document_url;
+  }
+
+  get emprunt_url(): string {
+    return this._emprunt_url;
+  }
+
+  get emprunts_url(): string {
+    return this._emprunts_url;
   }
 }

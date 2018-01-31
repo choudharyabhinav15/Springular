@@ -15,10 +15,10 @@
 
       <form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #signupForm="ngForm">
         <mat-input-container>
-          <label>Nom d'utilisateur: </label>
-          <input matInput formControlName="name" required>
+          <label>Nom médiathèque </label>
+          <input matInput formControlName="name" placeholder="Tapez le nom de la nouvelle médiathèque à ajouter" required>
         </mat-input-container>
-        <button type="submit" [disabled]="!signupForm.form.valid" mat-raised-button color="primary">Valider</button>
+        <button type="submit" [disabled]="!signupForm.form.valid" *ngIf="" mat-raised-button color="primary">Valider</button>
         <button type="reset" mat-raised-button color="secondary">Annuler</button>
       </form>
       <br>

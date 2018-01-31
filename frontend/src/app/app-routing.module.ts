@@ -12,6 +12,7 @@ import { ForbiddenComponent } from './forbidden';
 import { SignupComponent } from './signup';
 import {AccountComponent} from './account';
 import {MediaAddComponent} from './mediatheque/media-add';
+import {MediaAllComponent} from './mediatheque/media-all';
 
 export const routes: Routes = [
   {
@@ -34,6 +35,11 @@ export const routes: Routes = [
     path: 'my-account',
     component: AccountComponent,
     canActivate: [LoginGuard]
+  },
+  {
+    path: 'media/all',
+    component: MediaAllComponent,
+    canActivate: [GuestGuard]
   },
   {
     path: 'change-password',
