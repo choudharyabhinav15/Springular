@@ -1,14 +1,14 @@
-# Angular4 Spring Boot JWT Starter
+# Angular4 Spring Boot Project
 This sub-project is the backend server portion of the project.
 
 **Make sure you have Maven and Java 1.7 or greater**
 
 ```bash
 # change directory to server
-cd angular-spring-starter/server
+cd Springular/server
 
-# install the repo with mvn
-mvn install
+# clean and install the repo with mvn
+mvn clean install
 
 # start the server
 mvn spring-boot:run
@@ -22,7 +22,7 @@ mvn spring-boot:run
 
 ## File Structure
 ```
-angular-spring-starter/server
+Springular/server
  ├──src/                                                        * our source files
  │   ├──main
  │   │   ├──java.com.mediatheque
@@ -30,17 +30,39 @@ angular-spring-starter/server
  │   │   │   │   └──WebSecurityConfig.java                      * security configureation file, all the important things.
  │   │   │   ├──model
  │   │   │   │   ├──Authority.java
- │   │   │   │   ├──DateModel.java                              * date model class extend by other model class, this adds create_at and update_at fields.
- │   │   │   │   ├──DeleteableModel.java                        * similar as date model class, extend by other class, this adds deleted_at field.
+ │   │   │   │   ├──Document.java                       
+ │   │   │   │   ├──Audio.java                        
+ │   │   │   │   ├──Video.java                        
+ │   │   │   │   ├──Game.java                        
+ │   │   │   │   ├──Livre.java                       
+ │   │   │   │   ├──FicheEmprunt.java                      
+ │   │   │   │   ├──Localisation.java                      
+ │   │   │   │   ├──Mediatheque.java                        
+ │   │   │   │   ├──Rappel.java                         
+ │   │   │   │   ├──UserRequest.java                    
  │   │   │   │   ├──UserTokenState.java                         * stores the token states like token_key and token_ttl.
  │   │   │   │   └──User.java                                   * our main user model which implements UserDetails.
  │   │   │   ├──repository                                      * repositories folder for accessing database
- │   │   │   │   ├──DeleteableModelRepository.java              * base repository that overwrites the findAll method.
+ │   │   │   │   ├──AudioRepository.java              
+ │   │   │   │   ├──AuthorityRepository.java             
+ │   │   │   │   ├──DocumentRepository.java              
+ │   │   │   │   ├──FicheEmpruntRepository.java              
+ │   │   │   │   ├──GameRepository.java              
+ │   │   │   │   ├──LivreRepository.java              
+ │   │   │   │   ├──LocalisationRepository.java             
+ │   │   │   │   ├──MediathequeRepository.java              
+ │   │   │   │   ├──RappelRepository.java              
+ │   │   │   │   ├──VidoRepository.java                  
  │   │   │   │   └──UserRepository.java
  │   │   │   ├──rest                                            * rest endpoint folder
- │   │   │   │   ├──FooController.java                          * public REST controller.
- │   │   │   │   ├──AuthenticationController.java               * auth related REST controller.
- │   │   │   │   └──UserController.java                         * user/admin REST controller to handle User related requests
+ │   │   │   │   ├──DocumentController.java                          
+ │   │   │   │   ├──AuthenticationController.java               
+ │   │   │   │   └──UserController.java                         
+ │   │   │   │   └──EmpruntController.java                         
+ │   │   │   │   └──MediathequeController.java                      
+ │   │   │   │   └──PublicController.java                         
+ │   │   │   │   └──RappelController.java                         
+ │   │   │   │   └──LocalisationController.java                        
  │   │   │   ├──security                                        * Security related folder(JWT, filters)
  │   │   │   │   ├──auth
  │   │   │   │   │   ├──AuthenticationFailureHandler.java       * login fail handler, configrued in WebSecurityConfig
@@ -55,7 +77,20 @@ angular-spring-starter/server
  │   │   │   │   ├──impl
  │   │   │   │   │   ├──CustomUserDetailsService.java           * custom UserDatilsService implementataion, tells formLogin() where to check username/password
  │   │   │   │   │   └──UserServiceImpl.java
- │   │   │   │   └──UserService.java
+ │   │   │   │   │   └──DocumentServiceImpl.java
+ │   │   │   │   │   └──FicheEmpruntServiceImpl.java
+ │   │   │   │   │   └──LocalisationServiceImpl.java
+ │   │   │   │   │   └──MediathequeServiceImpl.java
+ │   │   │   │   │   └──RappelServiceImpl.java
+ │   │   │   │   │   └──AuthorityServiceImpl.java
+ │   │   │   │   └──AuthorityService.java
+ │   │   │   │   └──DocumentService.java
+ │   │   │   │   └──Empruntable.java
+ │   │   │   │   └──ficheEmpruntService.java
+ │   │   │   │   └──LocalisationService.java
+ │   │   │   │   └──MediathequeService.java
+ │   │   │   │   └──RappelService.java
+ │   │   │   │   └──UserService.java       
  │   │   │   └──Application.java                                * Application main enterance
  │   │   └──recources
  │   │       ├──static                                          * Angular2 frontend code will get built and served from here.

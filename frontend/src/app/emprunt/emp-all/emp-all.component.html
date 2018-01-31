@@ -1,0 +1,28 @@
+<div class="jumbotron">
+  <h3 class="text-center">{{title}}</h3>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Document</th>
+      <th>Client</th>
+      <th>Date d'emprunt</th>
+      <th>Date limite</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let emprunt of emprunts">
+    <td>{{emprunt.id}}</td>
+    <td>{{emprunt.document.title}}</td>
+    <td>{{emprunt.client.id}} : {{emprunt.client.firstname}}  {{emprunt.client.lastname}}</td>
+    <td>{{emprunt.dateEmprunt}}</td>
+    <td>{{emprunt.dateLimite}}</td>
+  </tr>
+  </tbody>
+</table>
+
+
+<p><i>Crée par <a href="https://github.com/ghilesfeghoul">Ghiles FEGHOUL</a></i></p>
+<p><i>Cliquer pour visiter mon Github</i></p>
+<button (click)="repository()" mat-raised-button color="accent">GitHub Repository</button>

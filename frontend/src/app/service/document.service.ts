@@ -13,5 +13,7 @@ export class DocumentService {
   getAllDocuments() {
     return this.apiService.get(this.config.documents_url);
   }
-
+  getDocument(id) {
+    return this.apiService.get(this.config.document_url + '/' + id)
+  }
 }

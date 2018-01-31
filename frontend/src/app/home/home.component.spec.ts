@@ -13,7 +13,6 @@ import {
   ApiService,
   AuthService,
   UserService,
-  FooService,
   ConfigService
 } from '../service';
 
@@ -39,7 +38,6 @@ describe('HomeComponent', () => {
         },
         AuthService,
         UserService,
-        FooService,
         ConfigService
       ]
     })

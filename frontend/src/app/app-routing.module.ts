@@ -12,8 +12,10 @@ import { ForbiddenComponent } from './forbidden';
 import { SignupComponent } from './signup';
 import {AccountComponent} from './account';
 import {MediaAddComponent} from './mediatheque/media-add';
-import {MediaAllComponent} from './mediatheque/media-all';
-
+import {DocAllComponent} from './document/doc-all';
+import {EmpAllComponent} from './emprunt/emp-all';
+import {LivreComponent} from './document/livre';
+import {EmpruntComponent} from './emprunt/emprunt/emprunt.component';
 export const routes: Routes = [
   {
     path: '',
@@ -37,11 +39,6 @@ export const routes: Routes = [
     canActivate: [LoginGuard]
   },
   {
-    path: 'media/all',
-    component: MediaAllComponent,
-    canActivate: [GuestGuard]
-  },
-  {
     path: 'change-password',
     component: ChangePasswordComponent,
     canActivate: [LoginGuard]
@@ -52,9 +49,29 @@ export const routes: Routes = [
     canActivate: [AdminGuard]
   },
   {
+    path: 'document/all',
+    component: DocAllComponent,
+    canActivate: [GuestGuard]
+  },
+  {
+    path: 'emprunt/all',
+    component: EmpAllComponent,
+    canActivate: [AdminGuard]
+  },
+  {
+    path: 'document',
+    component: LivreComponent,
+    canActivate: [GuestGuard]
+  },
+  {
     path: 'media',
     component: MediaAddComponent,
     canActivate: [AdminGuard]
+  },
+  {
+    path: 'emprunt',
+    component: EmpruntComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: '404',

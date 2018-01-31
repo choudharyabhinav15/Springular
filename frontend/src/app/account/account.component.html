@@ -17,7 +17,7 @@
       <form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #signupForm="ngForm">
         <input name="id" value="{{user.id}}" type="hidden">
         <mat-input-container>
-          <label>Username: </label>
+          <label>Nom d'utilisateur: </label>
           <input matInput formControlName="username" value="{{user.username}}" disabled="disabled">
         </mat-input-container>
         <br>
@@ -27,12 +27,12 @@
         </mat-input-container>
         <br>
         <mat-input-container>
-          <label>First Name: </label>
+          <label>Prénom: </label>
           <input matInput formControlName="firstname" value="{{user.firstname}}">
         </mat-input-container>
         <br>
         <mat-input-container>
-          <label>Last Name: </label>
+          <label>Nom: </label>
           <input matInput formControlName="lastname" value="{{user.lastname}}">
         </mat-input-container>
         <br>

@@ -31,16 +31,16 @@ import {
   GithubComponent
 } from './component';
 import {
-  MediaAddComponent
+  MediaAddComponent,
 } from './mediatheque';
 
 import {
   ApiService,
   AuthService,
   UserService,
-  FooService,
   ConfigService,
-  DocumentService
+  DocumentService,
+  EmpruntService,
 } from './service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
@@ -48,10 +48,10 @@ import { AdminComponent } from './admin/admin.component';
 import { SignupComponent } from './signup/signup.component';
 import { AccountComponent } from './account/account.component';
 import {MediathequeService} from './service/mediatheque.service';
-import { MediaAllComponent } from './mediatheque/media-all/media-all.component';
-import { DocAllComponent } from './document/doc-all/doc-all.component';
-import { LocAddComponent } from './localisation/loc-add/loc-add.component';
 import { EmpAllComponent } from './emprunt/emp-all/emp-all.component';
+import { DocAllComponent } from './document/doc-all/doc-all.component';
+import { LivreComponent } from './document/livre/livre.component';
+import { EmpruntComponent } from './emprunt/emprunt/emprunt.component';
 
 
 
@@ -76,10 +76,10 @@ export function initUserFactory(userService: UserService) {
     SignupComponent,
     AccountComponent,
     MediaAddComponent,
-    MediaAllComponent,
+    EmpAllComponent,
     DocAllComponent,
-    LocAddComponent,
-    EmpAllComponent
+    LivreComponent,
+    EmpruntComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -103,9 +103,9 @@ export function initUserFactory(userService: UserService) {
     LoginGuard,
     GuestGuard,
     AdminGuard,
-    FooService,
     AuthService,
     ApiService,
+    EmpruntService,
     UserService,
     ConfigService,
     MatIconRegistry,

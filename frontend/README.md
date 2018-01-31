@@ -1,33 +1,42 @@
-# Angular4 Spring Boot JWT Starter
-This sub-project is the frontend UI portion of the project and it was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+# Angular4 Spring Boot Project
+This sub-project is the frontend UI portion of the project and it was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
 
-**Make sure you also have NPM 3.1, Node 6.9.5 and angular-cli@1.0.0 globally installed**
+**Make sure you also have NPM 3.1, Node 6.9.5 and angular-cli@1.6.0 globally installed**
 
 ## File Structure
 ```
-angular-spring-starter/frontend
+Springular/frontend
  ├──src/
  │   ├──app                                                     * WebApp: folder
  │   │   ├──conponent                                           * stores all the reuseable components
- │   │   │   ├──api-card                                        * the card component in the home page
+ │   │   │   ├──api-card                                        * the card component in the home page (for the document render)
  │   │   │   ├──footer
- │   │   │   ├──github                                          * github banner in home page
+ │   │   │   ├──github                                          * github banner in home page (for Ghiles FEGHOUL)
  │   │   │   └──header
  │   │   ├──guard
  │   │   │   ├──login.guard.ts                                  * prevents unauthticated users from going into certain routes
  │   │   │   └──guest.guard.ts                                  * prevents authticated user from going into certain routes. e.g /login
+ │   │   │   └──admin.guard.ts                                  * prevents authticated admin from going into certain routes. e.g /emprunt
  │   │   ├──home                                                * home dashboard component
  │   │   ├──login                                               * login page card component
  │   │   ├──change-password                                     * change password card component
  │   │   ├──not-found                                           * not found page component
+ │   │   ├──mediatheque                                         * mediatheque directory 
+ │   │   │   ├──media-all                                       * render the path '/media/all'
+ │   │   ├──document                                            * document directory 
+ │   │   │   ├──doc-all                                         * render the path '/document/all'
+ │   │   │   ├──livre                                           * render the book path '/document'
+ │   │   ├──emprunt                                             * loan directory 
+ │   │   │   ├──emp-all                                         * render the path '/emprunt/all'
+ │   │   │   ├──emprunt                                         * render the loan path '/emprunt'
  │   │   ├──service
  │   │   │   ├──api.service.ts                                  * base api service class, the parent class for all api related services
  │   │   │   ├──auth.service.ts                                 * auth related api service like /login /logout
  │   │   │   ├──config.service.ts                               * global api path config file, this service stores all the app related api paths
- │   │   │   ├──foo.service.ts                                  * demo public api service FOO
+ │   │   │   ├──document.service.ts                             * service for init document info and view document info
  │   │   │   └──user.service.ts                                 * service for init user info and view user info
- │   │   │       ├──DeleteableModelRepository.java              * base repository that overwrites the findAll method.
- │   │   │       └──UserRepository.java
+ │   │   │   └──emprunt.service.ts                              * service for init loan info and view loan info
+ │   │   │   └──mediatheque.service.ts                          * service for init mediatheque info and view mediatheque info 
  │   │   ├──app-routing.module.ts                               * main router module
  │   │   ├──app.component.*                                     * main app component
  │   │   └──app.module.ts                                       * mian app module

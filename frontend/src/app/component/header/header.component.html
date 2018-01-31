@@ -11,10 +11,13 @@
       <button *ngIf="!hasSignedIn()" routerLink="/login" mat-button mat-ripple>
         <span>Connexion</span>
       </button>
-      <button *ngIf="!hasSignedIn()" routerLink="/media" mat-button mat-ripple>
+      <button *ngIf="hasSignedIn()" routerLink="/media" mat-button mat-ripple>
         <span>Ajouter Médiathèque</span>
       </button>
-      
+      <button *ngIf="hasSignedIn()" routerLink="/document/all" mat-button mat-ripple>
+        <span>Liste des documents</span>
+      </button>
+
       <button
         class="greeting-button"
         *ngIf="hasSignedIn()"

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {ApiService} from '../../service';
+import {ApiService, DocumentService, UserService} from '../../service';
 import {ConfigService} from '../../service/config.service';
+import {EmpruntService} from '../../service/emprunt.service';
 
 @Component({
   selector: 'app-api-card',
@@ -9,6 +10,11 @@ import {ConfigService} from '../../service/config.service';
 })
 export class ApiCardComponent implements OnInit {
 
+  currentUser;
+  document;
+  media;
+  empruntService: EmpruntService;
+  documentService: DocumentService;
   @Input() path: string;
   @Input() title: string;
   @Input() author: string;
@@ -17,16 +23,20 @@ export class ApiCardComponent implements OnInit {
   @Input() imgUrl: string;
   @Input() tarif: string;
 
-
   @Output() apiClick: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor(
+  ) {
+  }
 
   ngOnInit() {
    // console.log(this.responseObj);
   }
-  onEmpruntClick() {
-    this.apiClick.next(this.path)
+  realiserEmprunt() {
+    this.document = this.documentService.getDocument(this.path);
+    this.empruntService.addEmprunt(this.currentUser.id, this.path, this.document.mediatheque.id).subscribe(data => {
+      console.log(data)
+    })
   }
 
   /* responsePanelClass() {

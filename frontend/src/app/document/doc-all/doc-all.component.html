@@ -1,0 +1,25 @@
+<div class="jumbotron">
+  <h3 class="text-center">{{title}}</h3>
+</div>
+<table>
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Titre</th>
+    <th>Auteur</th>
+    <th>Genre</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let doc of documents">
+    <td>{{doc.id}}</td>
+    <td>{{doc.title}}</td>
+    <td>{{doc.author}}</td>
+    <td>{{doc.gender}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<p><i>Crée par <a href="https://github.com/ghilesfeghoul">Ghiles FEGHOUL</a></i></p>
+<p><i>Cliquer pour visiter mon Github</i></p>
+<button (click)="repository()" mat-raised-button color="accent">GitHub Repository</button>

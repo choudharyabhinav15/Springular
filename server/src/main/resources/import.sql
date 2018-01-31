@@ -9,5 +9,3 @@ INSERT INTO authority (id, name) VALUES (2, 'ROLE_ADMIN');
 INSERT INTO user_authority (user_id, authority_id) VALUES (1, 1);
 INSERT INTO user_authority (user_id, authority_id) VALUES (2, 1);
 INSERT INTO user_authority (user_id, authority_id) VALUES (2, 2);
-
-INSERT into documents (id,code,title,author,year,gender,empruntable,emprunte,nbEmprunt,nbEmprunt,localization,nbEmpruntTotal); values (1,'jv8','java8','jean','2014','prog',false,false,8,1,0)

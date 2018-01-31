@@ -32,7 +32,7 @@ export class AuthService {
       'Content-Type': 'application/json'
     });
     console.log(user);
-    return this.apiService.post(this.config.signup_url, JSON.stringify(user), signupHeaders).map(() =>{
+    return this.apiService.post(this.config.signup_url, JSON.stringify(user), signupHeaders).map(() => {
       console.log('Sign up success');
     });
   }
