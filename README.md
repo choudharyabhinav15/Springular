@@ -88,7 +88,7 @@ ___
  [MIT](/LICENSE)
 
 
-[frontend-doc]: https://github.com/bfwg/angular-spring-jwt-starter/tree/master/frontend
-[server-doc]: https://github.com/bfwg/angular-spring-jwt-starter/tree/master/server
+[frontend-doc]: https://github.com/ghilesfeghoul/Springular/tree/master/frontend
+[server-doc]: https://github.com/ghilesfeghoul/Springular/tree/master/server
 [status-image]: https://img.shields.io/badge/status-maintained-brightgreen.svg
 
