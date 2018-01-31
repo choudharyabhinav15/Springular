@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FooService,
   ConfigService,
   UserService, DocumentService
 } from '../service';
@@ -15,7 +14,6 @@ export class HomeComponent implements OnInit {
   currentUser;
   constructor(
     private config: ConfigService,
-    private fooService: FooService,
     private userService: UserService,
     private documentService: DocumentService
   ) { }
@@ -28,7 +26,4 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  makeRequest(path) {
-    console.log(path)
-  }
 }

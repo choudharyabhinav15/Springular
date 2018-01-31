@@ -30,6 +30,9 @@ import {
   FooterComponent,
   GithubComponent
 } from './component';
+import {
+  MediaAddComponent
+} from './mediatheque';
 
 import {
   ApiService,
@@ -44,6 +47,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AdminComponent } from './admin/admin.component';
 import { SignupComponent } from './signup/signup.component';
 import { AccountComponent } from './account/account.component';
+import {MediathequeService} from './service/mediatheque.service';
+
 
 
 export function initUserFactory(userService: UserService) {
@@ -65,7 +70,8 @@ export function initUserFactory(userService: UserService) {
     ForbiddenComponent,
     AdminComponent,
     SignupComponent,
-    AccountComponent
+    AccountComponent,
+    MediaAddComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -96,6 +102,7 @@ export function initUserFactory(userService: UserService) {
     ConfigService,
     MatIconRegistry,
     DocumentService,
+    MediathequeService,
     {
       'provide': APP_INITIALIZER,
       'useFactory': initUserFactory,

@@ -10,7 +10,8 @@ import { NotFoundComponent } from './not-found';
 import { ChangePasswordComponent } from './change-password';
 import { ForbiddenComponent } from './forbidden';
 import { SignupComponent } from './signup';
-import {AccountComponent} from "./account/account.component";
+import {AccountComponent} from './account';
+import {MediaAddComponent} from './mediatheque/media-add';
 
 export const routes: Routes = [
   {
@@ -19,10 +20,10 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path:'signup',
+    path: 'signup',
     component: SignupComponent,
     canActivate: [GuestGuard],
-    pathMatch:'full'
+    pathMatch: 'full'
   },
   {
     path: 'login',
@@ -42,6 +43,11 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+    canActivate: [AdminGuard]
+  },
+  {
+    path: 'media',
+    component: MediaAddComponent,
     canActivate: [AdminGuard]
   },
   {

@@ -1,5 +1,7 @@
 package com.mediatheque.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.mediatheque.util.Dateutil;
 
 import javax.persistence.*;
@@ -11,6 +13,7 @@ import java.util.Date;
  * @Licence MIT
  */
 @Entity(name = "rappels")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 public class Rappel implements Serializable{
 
     @Id

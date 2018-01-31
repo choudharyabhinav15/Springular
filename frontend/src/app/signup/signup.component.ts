@@ -93,7 +93,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     },
     error => {
       this.submitted = false;
-      console.log("Sign up error" + JSON.stringify(error));
+      console.log('Sign up error' + JSON.stringify(error));
       this.notification = { msgType: 'error', msgBody: error['error'].errorMessage };
     });
 

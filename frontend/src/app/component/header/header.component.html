@@ -3,9 +3,6 @@
     <img alt="Média" class="app-angular-logo" src="assets/image/login-logo.png">
     <span>MédiaTech</span>
   </button>
-
-
-
   <div class="right">
     <div fxFlex="1 1 auto" fxLayout="row" fxLayoutAlign="flex-end center">
       <button *ngIf="!hasSignedIn()" routerLink="/signup" mat-button mat-ripple>
@@ -14,6 +11,10 @@
       <button *ngIf="!hasSignedIn()" routerLink="/login" mat-button mat-ripple>
         <span>Connexion</span>
       </button>
+      <button *ngIf="!hasSignedIn()" routerLink="/media" mat-button mat-ripple>
+        <span>Ajouter Médiathèque</span>
+      </button>
+      
       <button
         class="greeting-button"
         *ngIf="hasSignedIn()"
@@ -28,6 +29,7 @@
         [matMenuTriggerFor]="accountMenu">
         <mat-icon>menu</mat-icon>
       </button>
+
       <mat-menu #accountMenu
         class="app-header-accountMenu"
         yposition="below"

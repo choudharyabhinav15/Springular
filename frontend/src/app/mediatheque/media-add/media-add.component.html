@@ -1,0 +1,38 @@
+<div class="jumbotron">
+  <h3 class="text-center">{{ title }}</h3>
+</div>
+<div class="content" fxLayout="row" fxLayoutAlign="center">
+
+  <mat-card elevation="5" fxFlex>
+
+    <mat-card-subtitle>
+      <h2>MédiaTECH | Ajout Media</h2>
+    </mat-card-subtitle>
+
+    <mat-card-content>
+
+      <p [class]="notification.msgType" *ngIf="notification">{{notification.msgBody}}</p>
+
+      <form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #signupForm="ngForm">
+        <mat-input-container>
+          <label>Nom d'utilisateur: </label>
+          <input matInput formControlName="name" required>
+        </mat-input-container>
+        <button type="submit" [disabled]="!signupForm.form.valid" mat-raised-button color="primary">Valider</button>
+        <button type="reset" mat-raised-button color="secondary">Annuler</button>
+      </form>
+      <br>
+
+      <mat-spinner *ngIf="submitted" mode="indeterminate"></mat-spinner>
+      <br>
+      <hr>
+
+      <p><i>Crée par <a href="https://github.com/ghilesfeghoul">Ghiles FEGHOUL</a></i></p>
+      <p><i>Cliquer pour visiter mon Github</i></p>
+      <button (click)="repository()" mat-raised-button color="accent">GitHub Repository</button>
+
+    </mat-card-content>
+
+  </mat-card>
+
+</div>

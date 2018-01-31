@@ -31,7 +31,7 @@ export class AuthService {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     });
-	console.log(user);
+    console.log(user);
     return this.apiService.post(this.config.signup_url, JSON.stringify(user), signupHeaders).map(() =>{
       console.log('Sign up success');
     });

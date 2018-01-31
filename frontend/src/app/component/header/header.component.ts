@@ -31,6 +31,11 @@ export class HeaderComponent implements OnInit {
     return !!this.userService.currentUser;
   }
 
+  isAdmin() {
+    if (this.userService.currentUser) {
+      return JSON.stringify(this.userService.currentUser.authorities).search('ROLE_ADMIN') !== -1;
+    }
+  }
   userName() {
     const user = this.userService.currentUser;
     return user.firstname + ' ' + user.lastname;

@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class ConfigService {
 
-  private _api_url = 'http://localhost:8080/api';
+  private _api_url = '/api';
 
   private _refresh_token_url = this._api_url + '/refresh';
 
@@ -31,6 +31,10 @@ export class ConfigService {
   private _document_url = this._api_url + '/document';
 
   private _documents_url = this._document_url + '/all';
+
+  private _mediatheque_url = this._api_url + '/media';
+
+  private _mediatheques_url = this._mediatheque_url + '/s';
 
   get reset_credentials_url(): string {
       return this._reset_credentials_url;
@@ -74,5 +78,12 @@ export class ConfigService {
 
   get documents_url(): string {
     return this._documents_url;
+  }
+  get mediatheques_url(): string {
+    return this._mediatheques_url;
+  }
+
+  get mediatheque_url(): string {
+    return this._mediatheque_url;
   }
 }

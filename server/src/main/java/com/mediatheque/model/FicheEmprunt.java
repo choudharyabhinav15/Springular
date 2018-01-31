@@ -1,5 +1,7 @@
 package com.mediatheque.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.mediatheque.util.Dateutil;
 import org.hibernate.engine.internal.Cascade;
 
@@ -14,6 +16,7 @@ import java.util.Objects;
  * @Licence MIT
  */
 @Entity(name = "emprunts")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 public class FicheEmprunt implements Serializable {
 
     @Id
@@ -23,7 +26,7 @@ public class FicheEmprunt implements Serializable {
     @ManyToOne(cascade= CascadeType.ALL)
     private Mediatheque mediatheque;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
+    @ManyToOne
     private User client;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
