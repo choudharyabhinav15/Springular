@@ -11,3 +11,5 @@ logging:
   level:
     org.springframework.web: ERROR
     com.bfwg: DEBUG
+server:
+  port : 8081
