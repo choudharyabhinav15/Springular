@@ -6,7 +6,7 @@
 	<groupId>com.bfwg</groupId>
 	<artifactId>angular-spring-starter</artifactId>
 	<version>0.1.1</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>angular-spring-starter</name>
 	<description>The backend server for Angular2 Spring Boot JWT Starter</description>
